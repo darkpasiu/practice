@@ -1,3 +1,11 @@
 # practice
 
-Simple test project.
+Simple C++ project.
+
+```bash
+mkdir build
+cd build/
+cmake ..
+make app
+make tests
+```
