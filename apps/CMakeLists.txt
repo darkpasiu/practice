@@ -1,8 +1,8 @@
-# Add executable called "appDemo" that is built from the source files
+# Add executable called "app" that is built from the source files
 # "main.cpp". The extensions are automatically found.
-add_executable (appDemo main.cpp)
+add_executable (app main.cpp)
 
-# Link the executable to the Hello library. Since the Hello library has
+# Link the executable to the "date" library. Since the "date" library has
 # public include directories we will use those link directories when building
-# appDemo
-target_link_libraries (appDemo LINK_PUBLIC date)
+# app
+target_link_libraries (app LINK_PUBLIC date)
