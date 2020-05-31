@@ -1,1 +1,3 @@
 # practice
+
+Simple test project.
