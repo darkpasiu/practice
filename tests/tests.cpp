@@ -1,7 +1,6 @@
 #include <iostream>
 #include "../src/date.hpp"
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 
 using namespace std;
 
@@ -12,5 +11,5 @@ int main(int argc, char* argv[])
 	
     cout << "dzien dobry, nakurwiam testy, nie cykaj, zaraz cos sie zjebie ^^" << endl;
 	
-	return 0;
+    return 0;
 }
