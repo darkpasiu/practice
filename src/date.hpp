@@ -14,6 +14,9 @@ class Date
  
         void SetDate(int year, int month, int day);
  
+        int setYear(int year) { m_year = year; }
+        int setMonth(int month) { m_month = month; }
+        int setDay(int day)  { m_day = day; }
         int getYear() { return m_year; }
         int getMonth() { return m_month; }
         int getDay()  { return m_day; }

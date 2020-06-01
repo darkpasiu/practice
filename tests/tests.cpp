@@ -9,8 +9,6 @@ int main(int argc, char* argv[])
     testing::InitGoogleTest(&argc, argv);
     RUN_ALL_TESTS();
 	
-    cout << "dzien dobry, nakurwiam testy, nie cykaj, zaraz cos sie zjebie ^^" << endl;
-	
     return 0;
 }
 
@@ -50,4 +48,51 @@ TEST(ClassDate, CheckConstructor2)
     EXPECT_TRUE(date.getYear() == 0);
     EXPECT_TRUE(date.getMonth() == 0);
     EXPECT_TRUE(date.getDay() == 0);
+}
+
+TEST_F(DateTest, CheckFixtureConstructor1)
+{
+    EXPECT_TRUE(date->getYear() == 0);
+    EXPECT_TRUE(date->getMonth() == 0);
+    EXPECT_TRUE(date->getDay() == 0);
+}
+
+TEST_F(DateTest, CheckFixtureConstructor2)
+{
+    int year = 2020;
+    int month = 6;
+    int day = 12;
+
+    date->SetDate(year, month, day);
+
+    EXPECT_TRUE(date->getYear() == year);
+    EXPECT_TRUE(date->getMonth() == month);
+    EXPECT_TRUE(date->getDay() == day);
+}
+
+TEST_F(DateTest, CheckSetYear)
+{
+    int year = 2000;
+    EXPECT_TRUE(date->getYear() == 0);
+
+    date->setYear(year);
+    EXPECT_TRUE(date->getYear() == year);
+}
+
+TEST_F(DateTest, CheckSetMonth)
+{
+    int month = 12;
+    EXPECT_TRUE(date->getMonth() == 0);
+
+    date->setMonth(month);
+    EXPECT_TRUE(date->getMonth() == month);
+}
+
+TEST_F(DateTest, CheckSetDay)
+{
+    int day = 15;
+    EXPECT_TRUE(date->getDay() == 0);
+
+    date->setDay(day);
+    EXPECT_TRUE(date->getDay() == day);
 }
