@@ -16,6 +16,9 @@ add_executable (tests tests.cpp)
 # tests
 target_link_libraries (tests LINK_PUBLIC gtest gtest_main date)
 
+# Testing
+enable_testing()
+
 # Create the gcov target. Run coverage tests with 'make gcov'
 add_custom_target(gcov
     COMMAND mkdir -p gcoverage
@@ -24,6 +27,7 @@ add_custom_target(gcov
     )
 
 add_custom_command(TARGET gcov
+    COMMAND ${CMAKE_BINARY_DIR}/tests/tests
     COMMAND echo "=================== GCOV ===================="
     COMMAND gcov -b ${CMAKE_SOURCE_DIR}/tests/*.cpp -o ${OBJECT_DIR}
     COMMAND echo "-- Source diretorie: ${CMAKE_SOURCE_DIR}/tests/"
@@ -32,3 +36,28 @@ add_custom_command(TARGET gcov
     )
 
 add_dependencies(gcov tests)
+
+# Create the lcov target. Run result tests with 'make lcov'
+add_custom_target(lcov
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMAND mkdir -p lcoverage
+    )
+add_custom_command(TARGET lcov
+    COMMAND echo "=================== LCOV ===================="
+    COMMAND echo "-- Passing lcov tool under code coverage"
+    COMMAND lcov --capture --directory ../ --output-file ${CMAKE_BINARY_DIR}/lcoverage/main_coverage.info
+    COMMAND echo "-- Generating HTML output files"
+    COMMAND genhtml ${CMAKE_BINARY_DIR}/lcoverage/main_coverage.info --output-directory ${CMAKE_BINARY_DIR}/lcoverage
+    )
+
+# Make sure to clean up the coverage folder
+set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
+
+# Create the gcov-clean target. This cleans the build as well as generated
+# .gcda and .gcno files.
+add_custom_target(init
+    COMMAND ${CMAKE_MAKE_PROGRAM} clean
+    COMMAND rm -f ${OBJECT_DIR}/*.gcno
+    COMMAND rm -f ${OBJECT_DIR}/*.gcda
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
