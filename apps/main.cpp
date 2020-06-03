@@ -9,6 +9,7 @@ int main()
 
     // memory leak
     char *x = new char[100];
+    //delete[] x;
 
     return 0;
 } 
