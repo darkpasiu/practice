@@ -5,7 +5,10 @@ using namespace std;
 
 int main()
 {
-	cout << "dzien dobry ^^" << endl;
-	
-	return 0;
+    cout << "dzien dobry ^^" << endl;
+
+    // memory leak
+    char *x = new char[100];
+
+    return 0;
 } 
