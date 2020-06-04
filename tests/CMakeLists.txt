@@ -1,6 +1,6 @@
 # Set the compiler options
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "-O0 -Wall -fprofile-arcs -ftest-coverage -g -coverage -fno-inline")
+set(CMAKE_CXX_FLAGS "-O0 -Wall -fprofile-arcs -ftest-coverage -coverage -fno-inline")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 
 # Create TESTS variable

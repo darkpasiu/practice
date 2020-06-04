@@ -39,6 +39,4 @@ include_directories(googletest-src/googlemock/include)
 include_directories(googletest-src/googletest/include)
 
 
-#if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-    add_subdirectory(tests)
-#endif()
+add_subdirectory(tests)

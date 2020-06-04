@@ -1,5 +1,3 @@
-set(CMAKE_CXX_FLAGS "-g")
-
 # Create a library called "date" which includes the source file "date.cpp".
 # The extension is already found. Any number of sources could be listed here.
 add_library (date date.cpp)
