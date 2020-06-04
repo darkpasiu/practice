@@ -1,5 +1,6 @@
 #include "date.hpp"
- 
+#include <iostream>
+
 // Date constructor
 Date::Date(int year, int month, int day)
 {
@@ -19,3 +20,19 @@ void Date::SetDate(int year, int month, int day)
     m_day = day;
     m_year = year;
 }
+
+// Date member function
+bool Date::leapYear()
+{
+    //std::cout << m_year << std::endl;
+    //std::cout << m_year % 4 << std::endl;
+    bool isLeapYear = false;
+
+    if ( m_year % 4 )
+        isLeapYear = true;
+    else
+        isLeapYear = false;
+
+    return isLeapYear;
+}
+
