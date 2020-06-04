@@ -11,5 +11,9 @@ int main()
     char *x = new char[100];
     //delete[] x;
 
+    Date date(2020, 6, 4);
+    date.leapYear();
+
+
     return 0;
 } 
