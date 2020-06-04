@@ -96,3 +96,15 @@ TEST_F(DateTest, CheckSetDay)
     date->setDay(day);
     EXPECT_TRUE(date->getDay() == day);
 }
+/*
+TEST_F(DateTest, CheckLeapYear)
+{
+    int year = 2000;
+    date->setYear(year);
+    EXPECT_TRUE(date->leapYear() == true);
+
+    year = 2001;
+    date->setYear(year);
+    EXPECT_TRUE(date->leapYear() == false);
+}
+*/

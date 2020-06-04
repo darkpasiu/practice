@@ -1,6 +1,6 @@
 # Set the compiler options
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS "-O0 -Wall -fprofile-arcs -ftest-coverage -g -coverage -fno-inline")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 
 # Create TESTS variable
@@ -50,9 +50,9 @@ add_custom_target(lcov
 add_custom_command(TARGET lcov
     COMMAND echo "=================== LCOV ===================="
     COMMAND echo "-- Passing lcov tool under code coverage"
-    COMMAND lcov --capture --directory ../ --output-file ${CMAKE_BINARY_DIR}/lcoverage/main_coverage.info
+    COMMAND lcov --capture --rc lcov_branch_coverage=1 --directory ../ --output-file ${CMAKE_BINARY_DIR}/lcoverage/main_coverage.info
     COMMAND echo "-- Generating HTML output files"
-    COMMAND genhtml ${CMAKE_BINARY_DIR}/lcoverage/main_coverage.info --output-directory ${CMAKE_BINARY_DIR}/lcoverage
+    COMMAND genhtml ${CMAKE_BINARY_DIR}/lcoverage/main_coverage.info --output-directory ${CMAKE_BINARY_DIR}/lcoverage --rc lcov_branch_coverage=1
     )
 
 add_dependencies(lcov gcov)
