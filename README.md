@@ -1,6 +1,9 @@
 # practice
 
 Simple C++ project.
+```bash
+sudo apt install g++ cmake lcov valgrind
+```
 
 ```bash
 mkdir build
