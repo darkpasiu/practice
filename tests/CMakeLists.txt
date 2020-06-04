@@ -10,10 +10,19 @@ set(TESTS "tests")
 set(OBJECT_DIR ${CMAKE_BINARY_DIR}/${TESTS}/CMakeFiles/${TESTS}.dir)
 message("-- Object files will be output to: ${OBJECT_DIR}")
 
+# Set the sources
+set(sources
+    tests.cpp
+    ../src/date.cpp
+    )
+# Set Include directories
+include_directories(
+    src/
+    ../src/
+    )
 
-# Add executable called "tests" that is built from the source files
-# "tests.cpp". The extensions are automatically found.
-add_executable (${TESTS} tests.cpp)
+# Create the executable
+add_executable(${TESTS} ${sources})
 
 # Link the executable to the library. Since the library has
 # public include directories we will use those link directories when building
