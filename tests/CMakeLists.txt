@@ -30,7 +30,7 @@ add_executable(${TESTS} ${sources})
 target_link_libraries (${TESTS} LINK_PUBLIC gtest gtest_main date)
 
 # Testing
-enable_testing()
+#enable_testing()
 
 # Create the gcov target. Run coverage tests with 'make gcov'
 add_custom_target(gcov
@@ -73,9 +73,8 @@ set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES gcoverage)
 # .gcda and .gcno files.
 add_custom_target(init
     COMMAND ${CMAKE_MAKE_PROGRAM} clean
-    COMMAND rm -f ${CMAKE_BINARY_DIR}/gcoverage/*.gcno
-    COMMAND rm -f ${CMAKE_BINARY_DIR}/gcoverage/*.gcda
-    COMMAND rm -f ${CMAKE_BINARY_DIR}/gcoverage/*.gcov
+    COMMAND rm -rf ${CMAKE_BINARY_DIR}/gcoverage/*
     COMMAND rm -rf ${CMAKE_BINARY_DIR}/lcoverage/*
+    COMMAND rm -rf ${CMAKE_BINARY_DIR}/valgrind/*
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
     )
