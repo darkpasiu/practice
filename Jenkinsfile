@@ -53,6 +53,20 @@ pipeline {
                 cd build
                 make valgrind
                 '''
+                publishValgrind (
+                    failBuildOnInvalidReports: false,
+                    failBuildOnMissingReports: false,
+                    failThresholdDefinitelyLost: '',
+                    failThresholdInvalidReadWrite: '',
+                    failThresholdTotal: '',
+                    pattern: 'build/valgrind/valgrind_memcheck.xml',
+                    publishResultsForAbortedBuilds: false,
+                    publishResultsForFailedBuilds: false,
+                    sourceSubstitutionPaths: '',
+                    unstableThresholdDefinitelyLost: '',
+                    unstableThresholdInvalidReadWrite: '',
+                    unstableThresholdTotal: ''
+                )
             }
         }
     }
