@@ -21,6 +21,7 @@ pipeline {
                 cd build
                 make tests
                 tests/tests --gtest_output="xml:testresults.xml"
+                ls -la
                 '''
             }
         }
