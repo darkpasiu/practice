@@ -20,9 +20,10 @@ pipeline {
                 mkdir -p build
                 cd build
                 make tests
-                tests/tests --gtest_output="xml:testresults.xml"
+                tests/tests --gtest_output="xml:gtestresults.xml"
                 ls -la
                 '''
+                junit 'build/gtestresults.xml'
             }
         }
         stage('Deploy') {
