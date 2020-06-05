@@ -34,6 +34,15 @@ pipeline {
                 cd build
                 make lcov
                 '''
+                // publish html
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'build/coverage',
+                    reportFiles: 'index.html',
+                    reportName: 'LCov Report'
+                ]
             }
         }
     }
