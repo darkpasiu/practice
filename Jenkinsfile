@@ -5,10 +5,12 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Building..'
-                sh 'mkdir build'
-                sh 'cd build'
-                sh 'cmake ..'
-                sh 'make app'
+                sh '''
+                mkdir -p build
+                cd build
+                cmake ..
+                make app
+                '''
             }
         }
         stage('Test') {
