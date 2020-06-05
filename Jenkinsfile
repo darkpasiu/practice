@@ -45,6 +45,16 @@ pipeline {
                 ]
             }
         }
+        stage('Valgrind') {
+            steps {
+                echo 'Static code check..'
+                sh '''
+                mkdir -p build
+                cd build
+                make valgrind
+                '''
+            }
+        }
     }
     post { 
         always { 
