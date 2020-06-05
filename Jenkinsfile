@@ -28,7 +28,7 @@ pipeline {
                 tests/tests --gtest_output="xml:gtestresults.xml"
                 ls -la
                 '''
-                unit 'build/gtestresults.xml'
+                junit 'build/gtestresults.xml'
             }
         }
         stage('Code coverage') {
