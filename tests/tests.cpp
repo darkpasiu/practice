@@ -96,7 +96,7 @@ TEST_F(DateTest, CheckSetDay)
     date->setDay(day);
     EXPECT_TRUE(date->getDay() == day);
     // test failure
-    //EXPECT_TRUE(date->getDay() == 7);
+    EXPECT_TRUE(date->getDay() == 7);
 }
 /*
 TEST_F(DateTest, CheckLeapYear)
