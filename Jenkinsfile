@@ -39,7 +39,7 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
                     keepAll: true,
-                    reportDir: 'build/coverage',
+                    reportDir: 'build/lcoverage',
                     reportFiles: 'index.html',
                     reportName: 'LCov Report'
                 ]
