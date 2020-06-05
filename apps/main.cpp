@@ -9,7 +9,7 @@ int main()
 
     // memory leak
     char *x = new char[100];
-    //delete[] x;
+    delete[] x;
 
     Date date(2020, 6, 4);
     date.leapYear();
