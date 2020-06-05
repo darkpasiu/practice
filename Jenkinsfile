@@ -25,7 +25,9 @@ pipeline {
                 tests/tests --gtest_output="xml:gtestresults.xml"
                 ls -la
                 '''
-                junit 'build/gtestresults.xml'
+                [$class: 'XUnitBuilder',
+                thresholds: [[$class: 'FailedThreshold', unstableThreshold: '1']],
+                tools: [[$class: 'JUnitType', pattern: 'build/gtestresults.xml']]]
             }
         }
         stage('Code coverage') {
