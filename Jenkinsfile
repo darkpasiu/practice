@@ -26,9 +26,14 @@ pipeline {
                 junit 'build/gtestresults.xml'
             }
         }
-        stage('Deploy') {
+        stage('Code coverage') {
             steps {
-                echo 'Deploying....'
+                echo 'Code coverage..'
+                sh '''
+                mkdir -p build
+                cd build
+                make lcov
+                '''
             }
         }
     }
