@@ -16,6 +16,11 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh '''
+                mkdir -p build
+                cd build
+                make tests
+                '''
             }
         }
         stage('Deploy') {
