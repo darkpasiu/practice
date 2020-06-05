@@ -10,6 +10,8 @@ pipeline {
                 cd build
                 cmake ..
                 make app
+                echo 'Run application'
+                apps/app
                 '''
             }
         }
