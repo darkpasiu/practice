@@ -28,7 +28,7 @@ pipeline {
                 tests/tests --gtest_output="xml:gtestresults.xml"
                 ls -la
                 '''
-                xunit thresholds: [failed(unstableNewThreshold: '1', unstableThreshold: '1')], tools: [GoogleTest(deleteOutputFiles: true, failIfNotNew: true, pattern: '', skipNoTestFiles: false, stopProcessingIfError: true)]
+                unit 'build/gtestresults.xml'
             }
         }
         stage('Code coverage') {
