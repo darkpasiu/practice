@@ -28,7 +28,7 @@ bool Date::leapYear()
     //std::cout << m_year % 4 << std::endl;
     bool isLeapYear = false;
 
-    if ( m_year % 4 )
+    if ( m_year % 4 == 0 )
         isLeapYear = true;
     else
         isLeapYear = false;
