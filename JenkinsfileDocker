@@ -1,29 +1,30 @@
-def summary
-
 pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20'))
         disableConcurrentBuilds()
     }
-    agent any
+    agent {
+        dockerfile {
+            filename 'Dockerfile'
+            additionalBuildArgs  '-t jenkins:ci'
+        }
+    }
 
     stages {
-        stage('Compile') {
+        stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building...'
                 sh '''
                 mkdir -p build
                 cd build
                 cmake ..
                 make app
-                echo 'Run application'
-                apps/app
                 '''
             }
         }
         stage('Valgrind') {
             steps {
-                echo 'Static code check..'
+                echo 'Run static code analysis...'
                 sh '''
                 mkdir -p build
                 cd build
@@ -47,7 +48,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Running tests...'
                 sh '''
                 mkdir -p build
                 cd build
@@ -63,7 +64,7 @@ pipeline {
         }
         stage('Code coverage') {
             steps {
-                echo 'Code coverage..'
+                echo 'Checking code coverage...'
                 sh '''
                 mkdir -p build
                 cd build
